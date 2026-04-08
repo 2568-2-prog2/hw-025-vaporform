@@ -41,14 +41,16 @@ while True:
         except Exception as e:
             print(f"Error decoding data...: {e}")
         status = "error"
-        if my_dice != None:
-            status = "success"
-
+        
         response_data = {
             "status": status,
             "message": "Hello, KU!",
-            "dice": my_dice.results
         } # JSON response example
+        
+        if my_dice != None:
+            status = "success"
+            response_data["dice"] = my_dice.results
+        
 
         # Convert dictionary to JSON string
         response_json = json.dumps(response_data)
